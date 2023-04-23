@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div id="g_id_onload" data-client_id="837008916394-rpige44fqbkd3mghgpqe9sccnl99eqco.apps.googleusercontent.com"
-      data-login_uri="/next.html" data-auto_prompt="false">
+        data-login_uri="/next.html" data-auto_prompt="false">
     </div>
     <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
-      data-shape="rectangular" data-logo_alignment="left">
+        data-shape="rectangular" data-logo_alignment="left" data-onsuccess="onSignIn">
     </div>
-  </body>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+    </script>
+</body>
 
 </html>
