@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Google Sign-In</title>
-  <meta name="google-signin-client_id" content="837008916394-rpige44fqbkd3mghgpqe9sccnl99eqco.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script>
-    function onSignIn(googleUser) {
-      // Get the user's ID token and basic profile information
-      var id_token = googleUser.getAuthResponse().id_token;
-      var profile = googleUser.getBasicProfile();
+  <head>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      function handleCredentialResponse (arg) {
+        console.log(arg);
+        alert("Ok");
+      }
+    </script>
+  </head>
 
-      // Log the user's ID token and basic profile information to the console
-      console.log('ID Token: ' + id_token);
-      console.log('Name: ' + profile.getName());
-      console.log('Email: ' + profile.getEmail());
-    }
-  </script>
-</head>
-<body>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-</body>
+  <body>
+    <div id="g_id_onload"
+         data-client_id="837008916394-rpige44fqbkd3mghgpqe9sccnl99eqco.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+  </body>
 </html>
