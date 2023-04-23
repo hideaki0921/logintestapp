@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Google OAuth Example</title>
+    <meta name="google-signin-client_id" content="837008916394-rpige44fqbkd3mghgpqe9sccnl99eqco.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
-
 <body>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload" data-client_id="837008916394-rpige44fqbkd3mghgpqe9sccnl99eqco.apps.googleusercontent.com"
-         data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
-        data-shape="rectangular" data-logo_alignment="left" data-onsuccess="onSignIn">
-    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
     <script>
         function onSignIn(googleUser) {
-            colsone.log("aaaaaaaaaa");
+            // Get the user's ID token and basic profile information
+            var id_token = googleUser.getAuthResponse().id_token;
             var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+
+            // Log the user's ID token and basic profile information to the console
+            console.log('ID Token: ' + id_token);
             console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            console.log('Email: ' + profile.getEmail());
         }
     </script>
 </body>
-
 </html>
